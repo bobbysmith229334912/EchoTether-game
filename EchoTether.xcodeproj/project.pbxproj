@@ -1,0 +1,670 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		510A01572E93D5E600CEC71A /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 510A01562E93D5E600CEC71A /* FirebaseFunctions */; };
+		512F71212E39AB250037C771 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 512F71202E39AB250037C771 /* FirebaseAuth */; };
+		512F71232E39AB250037C771 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 512F71222E39AB250037C771 /* FirebaseFirestore */; };
+		512F71252E39AB250037C771 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 512F71242E39AB250037C771 /* FirebaseStorage */; };
+		512F71282E39B1560037C771 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 512F71272E39B1560037C771 /* RevenueCat */; };
+		515E8D9C2E5736920082DC08 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 515E8D9B2E5736920082DC08 /* FirebaseFirestoreSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		512F70E62E39AA3B0037C771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 512F70D02E39AA390037C771 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 512F70D72E39AA390037C771;
+			remoteInfo = EchoTether;
+		};
+		512F70F02E39AA3B0037C771 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 512F70D02E39AA390037C771 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 512F70D72E39AA390037C771;
+			remoteInfo = EchoTether;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		512F70D82E39AA390037C771 /* EchoTether.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EchoTether.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		512F70E52E39AA3B0037C771 /* EchoTetherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EchoTetherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		512F70EF2E39AA3B0037C771 /* EchoTetherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EchoTetherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		512F711E2E39AABD0037C771 /* Exceptions for "EchoTether" folder in "EchoTether" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 512F70D72E39AA390037C771 /* EchoTether */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		512F70DA2E39AA390037C771 /* EchoTether */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				512F711E2E39AABD0037C771 /* Exceptions for "EchoTether" folder in "EchoTether" target */,
+			);
+			path = EchoTether;
+			sourceTree = "<group>";
+		};
+		512F70E82E39AA3B0037C771 /* EchoTetherTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EchoTetherTests;
+			sourceTree = "<group>";
+		};
+		512F70F22E39AA3B0037C771 /* EchoTetherUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = EchoTetherUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		512F70D52E39AA390037C771 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				515E8D9C2E5736920082DC08 /* FirebaseFirestoreSwift in Frameworks */,
+				512F71282E39B1560037C771 /* RevenueCat in Frameworks */,
+				512F71212E39AB250037C771 /* FirebaseAuth in Frameworks */,
+				510A01572E93D5E600CEC71A /* FirebaseFunctions in Frameworks */,
+				512F71232E39AB250037C771 /* FirebaseFirestore in Frameworks */,
+				512F71252E39AB250037C771 /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F70E22E39AA3B0037C771 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F70EC2E39AA3B0037C771 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		512F70CF2E39AA390037C771 = {
+			isa = PBXGroup;
+			children = (
+				512F70DA2E39AA390037C771 /* EchoTether */,
+				512F70E82E39AA3B0037C771 /* EchoTetherTests */,
+				512F70F22E39AA3B0037C771 /* EchoTetherUITests */,
+				512F70D92E39AA390037C771 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		512F70D92E39AA390037C771 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				512F70D82E39AA390037C771 /* EchoTether.app */,
+				512F70E52E39AA3B0037C771 /* EchoTetherTests.xctest */,
+				512F70EF2E39AA3B0037C771 /* EchoTetherUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		512F70D72E39AA390037C771 /* EchoTether */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 512F70F92E39AA3B0037C771 /* Build configuration list for PBXNativeTarget "EchoTether" */;
+			buildPhases = (
+				512F70D42E39AA390037C771 /* Sources */,
+				512F70D52E39AA390037C771 /* Frameworks */,
+				512F70D62E39AA390037C771 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				512F70DA2E39AA390037C771 /* EchoTether */,
+			);
+			name = EchoTether;
+			packageProductDependencies = (
+				512F71202E39AB250037C771 /* FirebaseAuth */,
+				512F71222E39AB250037C771 /* FirebaseFirestore */,
+				512F71242E39AB250037C771 /* FirebaseStorage */,
+				512F71272E39B1560037C771 /* RevenueCat */,
+				515E8D9B2E5736920082DC08 /* FirebaseFirestoreSwift */,
+				510A01562E93D5E600CEC71A /* FirebaseFunctions */,
+			);
+			productName = EchoTether;
+			productReference = 512F70D82E39AA390037C771 /* EchoTether.app */;
+			productType = "com.apple.product-type.application";
+		};
+		512F70E42E39AA3B0037C771 /* EchoTetherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 512F70FC2E39AA3B0037C771 /* Build configuration list for PBXNativeTarget "EchoTetherTests" */;
+			buildPhases = (
+				512F70E12E39AA3B0037C771 /* Sources */,
+				512F70E22E39AA3B0037C771 /* Frameworks */,
+				512F70E32E39AA3B0037C771 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				512F70E72E39AA3B0037C771 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				512F70E82E39AA3B0037C771 /* EchoTetherTests */,
+			);
+			name = EchoTetherTests;
+			packageProductDependencies = (
+			);
+			productName = EchoTetherTests;
+			productReference = 512F70E52E39AA3B0037C771 /* EchoTetherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		512F70EE2E39AA3B0037C771 /* EchoTetherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 512F70FF2E39AA3B0037C771 /* Build configuration list for PBXNativeTarget "EchoTetherUITests" */;
+			buildPhases = (
+				512F70EB2E39AA3B0037C771 /* Sources */,
+				512F70EC2E39AA3B0037C771 /* Frameworks */,
+				512F70ED2E39AA3B0037C771 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				512F70F12E39AA3B0037C771 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				512F70F22E39AA3B0037C771 /* EchoTetherUITests */,
+			);
+			name = EchoTetherUITests;
+			packageProductDependencies = (
+			);
+			productName = EchoTetherUITests;
+			productReference = 512F70EF2E39AA3B0037C771 /* EchoTetherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		512F70D02E39AA390037C771 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 1630;
+				TargetAttributes = {
+					512F70D72E39AA390037C771 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					512F70E42E39AA3B0037C771 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 512F70D72E39AA390037C771;
+					};
+					512F70EE2E39AA3B0037C771 = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 512F70D72E39AA390037C771;
+					};
+				};
+			};
+			buildConfigurationList = 512F70D32E39AA390037C771 /* Build configuration list for PBXProject "EchoTether" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 512F70CF2E39AA390037C771;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				512F711F2E39AB250037C771 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				512F71262E39B1560037C771 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 512F70D92E39AA390037C771 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				512F70D72E39AA390037C771 /* EchoTether */,
+				512F70E42E39AA3B0037C771 /* EchoTetherTests */,
+				512F70EE2E39AA3B0037C771 /* EchoTetherUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		512F70D62E39AA390037C771 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F70E32E39AA3B0037C771 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F70ED2E39AA3B0037C771 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		512F70D42E39AA390037C771 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F70E12E39AA3B0037C771 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512F70EB2E39AA3B0037C771 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		512F70E72E39AA3B0037C771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 512F70D72E39AA390037C771 /* EchoTether */;
+			targetProxy = 512F70E62E39AA3B0037C771 /* PBXContainerItemProxy */;
+		};
+		512F70F12E39AA3B0037C771 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 512F70D72E39AA390037C771 /* EchoTether */;
+			targetProxy = 512F70F02E39AA3B0037C771 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		512F70F72E39AA3B0037C771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		512F70F82E39AA3B0037C771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		512F70FA2E39AA3B0037C771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EchoTether/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = echoTether;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "EchoTether uses the camera to display nearby whispers in augmented reality.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "EchoTether uses your location to notify you when a nearby whisper unlocks, even when the app is closed.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "EchoTether needs background location to alert you about whispers near you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location to drop voice messages at specific places.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to your microphone to record voice whispers.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "EchoTether uses motion sensors for improved AR tracking.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 20.7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTether;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		512F70FB2E39AA3B0037C771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EchoTether/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = echoTether;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSCameraUsageDescription = "EchoTether uses the camera to display nearby whispers in augmented reality.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "EchoTether uses your location to notify you when a nearby whisper unlocks, even when the app is closed.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "EchoTether needs background location to alert you about whispers near you.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location to drop voice messages at specific places.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app needs access to your microphone to record voice whispers.";
+				INFOPLIST_KEY_NSMotionUsageDescription = "EchoTether uses motion sensors for improved AR tracking.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 20.7;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTether;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		512F70FD2E39AA3B0037C771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTetherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EchoTether.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EchoTether";
+			};
+			name = Debug;
+		};
+		512F70FE2E39AA3B0037C771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTetherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EchoTether.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EchoTether";
+			};
+			name = Release;
+		};
+		512F71002E39AA3B0037C771 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTetherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EchoTether;
+			};
+			name = Debug;
+		};
+		512F71012E39AA3B0037C771 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6JD9RHU2TB;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTetherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EchoTether;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		512F70D32E39AA390037C771 /* Build configuration list for PBXProject "EchoTether" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				512F70F72E39AA3B0037C771 /* Debug */,
+				512F70F82E39AA3B0037C771 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		512F70F92E39AA3B0037C771 /* Build configuration list for PBXNativeTarget "EchoTether" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				512F70FA2E39AA3B0037C771 /* Debug */,
+				512F70FB2E39AA3B0037C771 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		512F70FC2E39AA3B0037C771 /* Build configuration list for PBXNativeTarget "EchoTetherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				512F70FD2E39AA3B0037C771 /* Debug */,
+				512F70FE2E39AA3B0037C771 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		512F70FF2E39AA3B0037C771 /* Build configuration list for PBXNativeTarget "EchoTetherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				512F71002E39AA3B0037C771 /* Debug */,
+				512F71012E39AA3B0037C771 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		512F711F2E39AB250037C771 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+		512F71262E39B1560037C771 /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.33.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		510A01562E93D5E600CEC71A /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFunctions;
+		};
+		512F71202E39AB250037C771 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 512F711F2E39AB250037C771 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		512F71222E39AB250037C771 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 512F711F2E39AB250037C771 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		512F71242E39AB250037C771 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 512F711F2E39AB250037C771 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		512F71272E39B1560037C771 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 512F71262E39B1560037C771 /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		515E8D9B2E5736920082DC08 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 512F711F2E39AB250037C771 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 512F70D02E39AA390037C771 /* Project object */;
+}

@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Whispers collection
+    match /whispers/{id} {
+      // Public read so AR can render nearby whispers
+      allow read: if true;
+
+      // Create: only if signed in and creating your own whisper
+      allow create: if request.auth != null
+                    && request.resource.data.ownerId == request.auth.uid;
+
+      // Update/Delete: only by owner, and cannot touch claim fields
+      allow update, delete: if request.auth != null
+        && resource.data.ownerId == request.auth.uid
+        && !(
+          ("claimed" in request.resource.data) ||
+          ("claimedBy" in request.resource.data) ||
+          ("claimedAt" in request.resource.data) ||
+          ("claimCount" in request.resource.data)
+        );
+    }
+
+    // Transactions (audit logs) - only written via Cloud Functions
+    match /transactions/{tid} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    // Deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

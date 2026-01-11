@@ -1,0 +1,13 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "whispers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "deleted", "order": "ASCENDING" },
+        { "fieldPath": "unlockAt", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
