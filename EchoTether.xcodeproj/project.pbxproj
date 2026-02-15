@@ -12,6 +12,7 @@
 		512F71232E39AB250037C771 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 512F71222E39AB250037C771 /* FirebaseFirestore */; };
 		512F71252E39AB250037C771 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 512F71242E39AB250037C771 /* FirebaseStorage */; };
 		512F71282E39B1560037C771 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 512F71272E39B1560037C771 /* RevenueCat */; };
+		51561A552F2E837A00D35E29 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 51561A542F2E837A00D35E29 /* Lottie */; };
 		515E8D9C2E5736920082DC08 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 515E8D9B2E5736920082DC08 /* FirebaseFirestoreSwift */; };
 /* End PBXBuildFile section */
 
@@ -43,16 +44,28 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				money/RestaurantMapView.swift,
 			);
 			target = 512F70D72E39AA390037C771 /* EchoTether */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		5183AF162F20C92400C07EA5 /* Exceptions for "EchoTether" folder in "Copy Bundle Resources" phase from "EchoTether" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 512F70D62E39AA390037C771 /* Resources */;
+			membershipExceptions = (
+				money/RestaurantMapView.swift,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		512F70DA2E39AA390037C771 /* EchoTether */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				512F711E2E39AABD0037C771 /* Exceptions for "EchoTether" folder in "EchoTether" target */,
+				5183AF162F20C92400C07EA5 /* Exceptions for "EchoTether" folder in "Copy Bundle Resources" phase from "EchoTether" target */,
 			);
 			path = EchoTether;
 			sourceTree = "<group>";
@@ -75,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				515E8D9C2E5736920082DC08 /* FirebaseFirestoreSwift in Frameworks */,
+				51561A552F2E837A00D35E29 /* Lottie in Frameworks */,
 				512F71282E39B1560037C771 /* RevenueCat in Frameworks */,
 				512F71212E39AB250037C771 /* FirebaseAuth in Frameworks */,
 				510A01572E93D5E600CEC71A /* FirebaseFunctions in Frameworks */,
@@ -146,6 +160,7 @@
 				512F71272E39B1560037C771 /* RevenueCat */,
 				515E8D9B2E5736920082DC08 /* FirebaseFirestoreSwift */,
 				510A01562E93D5E600CEC71A /* FirebaseFunctions */,
+				51561A542F2E837A00D35E29 /* Lottie */,
 			);
 			productName = EchoTether;
 			productReference = 512F70D82E39AA390037C771 /* EchoTether.app */;
@@ -232,6 +247,7 @@
 			packageReferences = (
 				512F711F2E39AB250037C771 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				512F71262E39B1560037C771 /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				51561A532F2E837A00D35E29 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 512F70D92E39AA390037C771 /* Products */;
@@ -456,7 +472,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 20.7;
+				MARKETING_VERSION = 21.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -493,7 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 20.7;
+				MARKETING_VERSION = 21.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hardcoreamature.EchoTether;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -632,6 +648,14 @@
 				minimumVersion = 5.33.1;
 			};
 		};
+		51561A532F2E837A00D35E29 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -658,6 +682,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 512F71262E39B1560037C771 /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
+		};
+		51561A542F2E837A00D35E29 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 51561A532F2E837A00D35E29 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		515E8D9B2E5736920082DC08 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;

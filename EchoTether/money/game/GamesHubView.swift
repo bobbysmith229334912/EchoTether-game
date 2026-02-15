@@ -1,13 +1,16 @@
+//
 //  GamesHubView.swift
 //  EchoTether
 //
 //  Games use REAL wallet money (Stripe/Firestore), not free whisper credits.
+//
 
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
 struct GamesHubView: View {
+
     // MARK: - Game selection
     private enum ActiveGame {
         case plinko
@@ -64,12 +67,13 @@ struct GamesHubView: View {
             Button("Yes, I’m 18+ and allowed", role: .none) {
                 if let pending = pendingGame {
                     activeGame = pending
+                    pendingGame = nil
                     showGameSheet = true
                 }
             }
             Button("No", role: .cancel) {
-                // Just dismiss; do nothing
                 pendingGame = nil
+                activeGame = nil
             }
         } message: {
             Text("""
@@ -91,9 +95,11 @@ By continuing, you confirm:
                     case .plinko:
                         EchoPlinkoView()
                     case .bubblePop:
-                        EchoBubblePopView()   // ⬅️ new game view (stub below)
+                        BubblePopGameView() // ✅ matches stub below, compiles
                     case .none:
-                        Text("No game selected.")
+                        ContentUnavailableView("No game selected",
+                                               systemImage: "gamecontroller",
+                                               description: Text("Pick a game from the list to start playing."))
                     }
                 }
                 .navigationTitle(navTitle(for: activeGame))
@@ -196,6 +202,7 @@ By continuing, you confirm:
 
     private var availableGamesSection: some View {
         Section("Available Games") {
+
             // Echo Plinko row
             Button {
                 pendingGame = .plinko
@@ -229,7 +236,7 @@ By continuing, you confirm:
             }
             .buttonStyle(.plain)
 
-            // NEW: Bubble Pop row
+            // Bubble Pop row
             Button {
                 pendingGame = .bubblePop
                 showAgeGate = true
@@ -291,21 +298,23 @@ By continuing, you confirm:
         isLoading = true
         errorMessage = nil
 
-        let db = Firestore.firestore()
-        db.collection("users").document(user.uid).getDocument { snap, error in
-            DispatchQueue.main.async {
-                self.isLoading = false
+        Firestore.firestore()
+            .collection("users")
+            .document(user.uid)
+            .getDocument { snap, error in
+                DispatchQueue.main.async {
+                    self.isLoading = false
 
-                if let error = error {
-                    self.errorMessage = "Error: \(error.localizedDescription)"
-                    self.walletCents = nil
-                    return
+                    if let error = error {
+                        self.errorMessage = "Error: \(error.localizedDescription)"
+                        self.walletCents = nil
+                        return
+                    }
+
+                    let cents = (snap?.data()?["availableCents"] as? Int) ?? 0
+                    self.walletCents = cents
                 }
-
-                let cents = (snap?.data()?["availableCents"] as? Int) ?? 0
-                self.walletCents = cents
             }
-        }
     }
 }
 
@@ -314,6 +323,9 @@ By continuing, you confirm:
 struct BubblePopGameView: View {
     var body: some View {
         VStack(spacing: 16) {
+            Image(systemName: "circle.grid.3x3.fill")
+                .font(.system(size: 42))
+
             Text("Bubble Pop")
                 .font(.largeTitle.bold())
 
@@ -321,7 +333,11 @@ struct BubblePopGameView: View {
                 .font(.footnote)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
+                .padding(.horizontal)
+
+            Spacer(minLength: 0)
         }
         .padding()
+        .navigationBarTitleDisplayMode(.inline)
     }
 }

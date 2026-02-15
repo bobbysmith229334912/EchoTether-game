@@ -22,6 +22,10 @@ struct EchoTetherApp: App {
     @AppStorage("referrerCode") private var referrerCode: String = ""
     @State private var showCreatorCodeSheet = false
 
+    // ✅ NEW: In-app animated splash (Chaotic Bubble Burst style)
+    @State private var showSplash: Bool = true
+    @State private var didBootstrapAfterSplash: Bool = false
+
     // Generate/read a persistent ID that survives reinstall
     static var persistentUserID: String = {
         if let data = Keychain.load(kUserIdKey),
@@ -48,47 +52,62 @@ struct EchoTetherApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(subscriptionManager)
-                .environmentObject(whisperStore)
+            ZStack {
+                // Your main app
+                ContentView()
+                    .environmentObject(subscriptionManager)
+                    .environmentObject(whisperStore)
 
-                // 🔑 Bootstrap everything on launch:
-                // - anonymous auth (no visible sign in)
-                // - live whisper balance
-                // - creator code / referrer handling
-                .task {
-                    await bootstrapUserAndBalances()
-                }
+                    // 🔑 Bootstrap everything on launch (after splash ends)
+                    .task {
+                        // ✅ NEW: prevent bootstrap from running behind the splash
+                        guard !showSplash else { return }
+                        guard !didBootstrapAfterSplash else { return }
+                        didBootstrapAfterSplash = true
+                        await bootstrapUserAndBalances()
+                    }
 
-                // 🔗 Deep link handling for ?ref=CREATORCODE
-                .onOpenURL { url in
-                    guard
-                        let items = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems,
-                        let ref = items.first(where: { $0.name == "ref" })?.value?.trimmingCharacters(in: .whitespacesAndNewlines),
-                        !ref.isEmpty
-                    else { return }
+                    // 🔗 Deep link handling for ?ref=CREATORCODE
+                    .onOpenURL { url in
+                        guard
+                            let items = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems,
+                            let ref = items.first(where: { $0.name == "ref" })?.value?.trimmingCharacters(in: .whitespacesAndNewlines),
+                            !ref.isEmpty
+                        else { return }
 
-                    let code = ref.uppercased()
-                    referrerCode = code
-                    Purchases.shared.attribution.setAttributes(["referrer": code])
-                    print("🔗 Set referrer from URL: \(code)")
-                }
+                        let code = ref.uppercased()
+                        referrerCode = code
+                        Purchases.shared.attribution.setAttributes(["referrer": code])
+                        print("🔗 Set referrer from URL: \(code)")
+                    }
 
-                // 🧩 Creator code sheet
-                .sheet(isPresented: $showCreatorCodeSheet) {
-                    CreatorCodeView(
-                        onApply: { code in
-                            let codeUpper = code.uppercased()
-                            referrerCode = codeUpper
-                            Purchases.shared.attribution.setAttributes(["referrer": codeUpper])
-                            print("✅ Referrer saved via sheet: \(codeUpper)")
-                            showCreatorCodeSheet = false
-                        },
-                        onSkip: {
-                            showCreatorCodeSheet = false
+                    // 🧩 Creator code sheet
+                    .sheet(isPresented: $showCreatorCodeSheet) {
+                        CreatorCodeView(
+                            onApply: { code in
+                                let codeUpper = code.uppercased()
+                                referrerCode = codeUpper
+                                Purchases.shared.attribution.setAttributes(["referrer": codeUpper])
+                                print("✅ Referrer saved via sheet: \(codeUpper)")
+                                showCreatorCodeSheet = false
+                            },
+                            onSkip: {
+                                showCreatorCodeSheet = false
+                            }
+                        )
+                    }
+
+                // ✅ NEW: Animated splash overlay (Chaotic Bubble Burst style)
+                if showSplash {
+                    SplashView {
+                        withAnimation(.easeOut(duration: 0.25)) {
+                            showSplash = false
                         }
-                    )
+                    }
+                    .transition(.opacity)
+                    .zIndex(999)
                 }
+            }
         }
     }
 }

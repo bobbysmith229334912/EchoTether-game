@@ -1936,12 +1936,22 @@ exports.connectCreateOrGetAccount = functions
 
       if (!accountId) {
         const acct = await stripe.accounts.create({
-          type: "express",
-          capabilities: {
-            card_payments: { requested: true },
-            transfers: { requested: true },
-          },
-        });
+        type: "express",
+        business_type: "individual",
+
+        individual: {},
+
+        business_profile: {
+        product_description: "Peer-to-peer in-app rewards and cash outs",
+        url: "https://hardcoreamature.com",
+        mcc: "7399",
+        },
+
+        capabilities: {
+        card_payments: { requested: true },
+        transfers: { requested: true },
+        },
+      });
         await userRef.update({
           stripeAccountId: acct.id,
           updatedAt: admin.firestore.Timestamp.now(),
