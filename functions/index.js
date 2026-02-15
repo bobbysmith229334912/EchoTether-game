@@ -554,6 +554,44 @@ exports.getDigitalWalletConfig = functions
     secrets: ["ENABLE_CRYPTO_MODE", "KRAKEN_SANDBOX"],
   })
   .https.onCall(async (data, context) => {
+    // 💰 MONTHLY PROMO BUDGET CAP (owner-funded drops only)
+    // Set with: firebase functions:config:set promo.monthly_cap_cents="20000"
+    const capCents = Number((functions.config()?.promo?.monthly_cap_cents) || "0"); // 0 = unlimited
+    if (capCents > 0) {
+      const now = new Date();
+      const monthKey = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}`;
+      const budgetRef = db.collection("system").doc("promoDropsBudget");
+
+      await db.runTransaction(async (tx) => {
+        const snap = await tx.get(budgetRef);
+        const data = snap.exists ? (snap.data() || {}) : {};
+        const spentByMonth = data.spentByMonth || {};
+        const spent = Number(spentByMonth[monthKey] || 0);
+
+        if (!Number.isFinite(spent)) {
+          throw new functions.https.HttpsError("internal", "Promo budget state invalid.");
+        }
+        if (spent + amountCents > capCents) {
+          throw new functions.https.HttpsError(
+            "failed-precondition",
+            `Monthly promo drop budget reached for ${monthKey}.`
+          );
+        }
+
+        tx.set(
+          budgetRef,
+          {
+            updatedAt: admin.firestore.Timestamp.now(),
+            spentByMonth: {
+              ...spentByMonth,
+              [monthKey]: spent + amountCents,
+            },
+          },
+          { merge: True }
+        )
+      });
+    }
+
     enforceAppCheckOrSkip(context);
 
     return {
