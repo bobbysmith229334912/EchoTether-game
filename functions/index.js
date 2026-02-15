@@ -3323,3 +3323,131 @@ exports.stripeWebhook = functions
       return res.status(500).send("Internal error");
     }
   });
+
+
+/* ==================== Random Drops (EchoTether) ====================
+   Backend-only system:
+   - createRandomDropAdmin: creator/admin generates a drop
+   - claimDrop: users claim a drop (server verifies distance + anti-cheat)
+   NOTE: This is credits-first (balanceCents). You can convert to cash-out later.
+===================================================================== */
+
+const { createRandomDrop, claimDropTxn } = require("./drops/drops");
+
+// Admin allowlist (comma-separated UIDs). Optional.
+// Example: firebase functions:config:set drops.admin_uids="uid1,uid2"
+function isDropsAdmin(context) {
+  const allow = (process.env.DROPS_ADMIN_UIDS || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const uid = context?.auth?.uid || "";
+  const isCustomAdmin = !!context?.auth?.token?.admin;
+
+  return isCustomAdmin || (uid && allow.includes(uid));
+}
+
+/**
+ * createRandomDropAdmin (callable)
+ * data:
+ * {
+ *   centerLat, centerLng,
+ *   amountCents (int),
+ *   ttlMinutes (int, default 30),
+ *   visibilityRadiusM (int, default 200),
+ *   claimRadiusM (int, default 20)
+ * }
+ */
+exports.createRandomDropAdmin = functions
+  .region("us-central1")
+  .https.onCall(async (data, context) => {
+    enforceAppCheckOrSkip(context);
+
+    if (!context.auth) {
+      throw new functions.https.HttpsError("unauthenticated", "Sign in required.");
+    }
+    if (!isDropsAdmin(context)) {
+      throw new functions.https.HttpsError("permission-denied", "Not authorized.");
+    }
+
+    const centerLat = Number(data?.centerLat);
+    const centerLng = Number(data?.centerLng);
+    if (!isValidLatLon(centerLat, centerLng)) {
+      throw new functions.https.HttpsError("invalid-argument", "Invalid centerLat/centerLng.");
+    }
+
+    const amountCents = Number(data?.amountCents || 0);
+    if (!Number.isInteger(amountCents) || amountCents <= 0 || amountCents > 5000) {
+      throw new functions.https.HttpsError(
+        "invalid-argument",
+        "amountCents must be an integer between 1 and 5000."
+      );
+    }
+
+    const ttlMinutes = Number.isInteger(Number(data?.ttlMinutes)) ? Number(data.ttlMinutes) : 30;
+    const visibilityRadiusM =
+      Number.isInteger(Number(data?.visibilityRadiusM)) ? Number(data.visibilityRadiusM) : 200;
+    const claimRadiusM =
+      Number.isInteger(Number(data?.claimRadiusM)) ? Number(data.claimRadiusM) : 20;
+
+    const result = await createRandomDrop({
+      centerLat,
+      centerLng,
+      amountCents,
+      ttlMinutes,
+      visibilityRadiusM,
+      claimRadiusM,
+    });
+
+    return { ok: true, drop: result };
+  });
+
+/**
+ * claimDrop (callable)
+ * data:
+ * { dropId, lat, lng, accuracyM, deviceHash }
+ */
+exports.claimDrop = functions
+  .region("us-central1")
+  .https.onCall(async (data, context) => {
+    enforceAppCheckOrSkip(context);
+
+    if (!context.auth) {
+      throw new functions.https.HttpsError("unauthenticated", "Sign in required.");
+    }
+
+    const uid = context.auth.uid;
+    const dropId = String(data?.dropId || "").trim();
+    if (!dropId) {
+      throw new functions.https.HttpsError("invalid-argument", "dropId required.");
+    }
+
+    const lat = Number(data?.lat);
+    const lng = Number(data?.lng);
+    const accuracyM = data?.accuracyM == null ? null : Number(data.accuracyM);
+    const deviceHash = data?.deviceHash ? String(data.deviceHash).slice(0, 128) : null;
+
+    if (!isValidLatLon(lat, lng)) {
+      throw new functions.https.HttpsError("invalid-argument", "Invalid lat/lng.");
+    }
+    if (accuracyM != null && (!Number.isFinite(accuracyM) || accuracyM < 0 || accuracyM > 500)) {
+      throw new functions.https.HttpsError("invalid-argument", "Invalid accuracyM.");
+    }
+
+    const res = await claimDropTxn({
+      uid,
+      dropId,
+      userLat: lat,
+      userLng: lng,
+      userAccuracyM: accuracyM,
+      deviceHash,
+    });
+
+    if (!res.ok) {
+      return res; // { ok:false, reason, ... }
+    }
+
+    return res; // { ok:true, amountCents, newBalanceCents }
+  });
+
