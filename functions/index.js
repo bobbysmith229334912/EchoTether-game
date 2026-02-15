@@ -3362,6 +3362,15 @@ function isDropsAdmin(context) {
 exports.createRandomDropAdmin = functions
   .region("us-central1")
   .https.onCall(async (data, context) => {
+    // 🔒 OWNER-ONLY PROMO DROPS
+    const OWNER_UID = "zx2w07lTgqaCcKk2IvzeOqcdIwp2";
+
+    if (!context.auth || context.auth.uid !== OWNER_UID) {
+      throw new functions.https.HttpsError(
+        "permission-denied",
+        "Only the owner can create promo drops."
+      );
+    }
     enforceAppCheckOrSkip(context);
 
     if (!context.auth) {
