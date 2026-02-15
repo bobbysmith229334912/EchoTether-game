@@ -3,7 +3,7 @@
   "description": "EchoTether Cloud Functions (1st Gen)",
   "private": true,
   "engines": {
-    "node": "18"
+    "node": "20"
   },
   "main": "index.js",
   "scripts": {
